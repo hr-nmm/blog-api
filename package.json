@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-backend": "nodemon index.js"
+    "test": "node --test",
+    "dev-backend": "nodemon index.js",
+    "lint": "eslint ."
   },
   "author": "hr-nmm",
   "license": "ISC",
@@ -15,6 +16,10 @@
     "mongoose": "^8.6.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "@stylistic/eslint-plugin-js": "^2.7.1",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
     "nodemon": "^3.1.4"
   }
 }
