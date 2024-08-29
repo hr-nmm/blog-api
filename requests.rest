@@ -1,0 +1,16 @@
+### get info
+GET http://localhost:3001/api/blogs/info
+
+### get all 
+GET http://localhost:3001/api/blogs
+
+### create resource
+POST http://localhost:3001/api/blogs/
+Content-Type: application/json
+
+{
+    "title": "Shtetl-Optimized",
+    "author": "Scott Aaronson",
+    "url": "https://scottaaronson.blog/",
+    "likes": 5641
+}
