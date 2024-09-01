@@ -1,6 +1,15 @@
 ### get info
 GET http://localhost:3001/api/blogs/info
 
+### get single resource (ERS)
+GET http://localhost:3001/api/blogs/66d05e16d407cb463574517c
+
+### get single resource => 404 not found(id valid)
+GET http://localhost:3001/api/blogs/66d05e16d407cb4635745173
+
+###get single resource => 400 (id invalid)
+GET http://localhost:3001/api/blogs/66d05e16d407cb463574517c3
+
 ### get all 
 GET http://localhost:3001/api/blogs
 
@@ -12,5 +21,25 @@ Content-Type: application/json
     "title": "Shtetl-Optimized",
     "author": "Scott Aaronson",
     "url": "https://scottaaronson.blog/",
-    "likes": 5641
+    "likes":5641
 }
+
+### update resource
+PUT http://localhost:3001/api/blogs/66d47723d3fb328d9c2931b8
+Content-Type: application/json
+
+{
+    "title": "Shtetl-Optimized1",
+    "author": "Scott Aaronson",
+    "url": "https://scottaaronson.blog/",
+    "likes":5641
+}
+
+### delete resource
+DELETE http://localhost:3001/api/blogs/66d47674ec685c792da7948b
+
+### delete single resource => 404 not found(id valid)
+DELETE  http://localhost:3001/api/blogs/66d05e16d407cb4635745173
+
+### delete single resource => 400 (id invalid)
+DELETE  http://localhost:3001/api/blogs/66d05e16d407cb463574517c3
