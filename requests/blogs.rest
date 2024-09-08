@@ -16,12 +16,13 @@ GET http://localhost:3001/api/blogs
 ### create resource
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QyIiwiaWQiOiI2NmRkNDYxOTFkZThlNmFmNzI2MWJjZjMiLCJpYXQiOjE3MjU4MjAzOTQsImV4cCI6MTcyNTgyMzk5NH0.TAHCCWN9OQXr5M0l9zxcbeecUDj1B_m4A5gF61yXPoc
 
 {
-    "title": "t2",
-    "author": "a2",
-    "url": "https://u2.blog/",
-    "likes":2,
+    "title": "t2.1",
+    "author": "a2.1",
+    "url": "https://u2.1.blog/",
+    "likes":2.1,
     "userId": "66dd46191de8e6af7261bcf3"
 }
 
