@@ -5,6 +5,7 @@ const supertest = require('supertest')
 const app = require('../app')
 const helper = require('./test_helper')
 const Blog = require('../models/blog')
+const logger = require('../utils/logger')
 
 const api = supertest(app)
 
@@ -136,5 +137,5 @@ describe('when there is initially some notes saved in testDB', () => {
 
 after(async () => {
   await mongoose.connection.close()
-  console.log('connection closed')
+  logger.info('connection closed')
 })
