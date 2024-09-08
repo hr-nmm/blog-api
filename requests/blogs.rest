@@ -14,14 +14,15 @@ GET http://localhost:3001/api/blogs/66d05e16d407cb463574517c3
 GET http://localhost:3001/api/blogs
 
 ### create resource
-POST http://localhost:3001/api/blogs/
+POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Shtetl-Optimized",
-    "author": "Scott Aaronson",
-    "url": "https://scottaaronson.blog/",
-    "likes":5641
+    "title": "t2",
+    "author": "a2",
+    "url": "https://u2.blog/",
+    "likes":2,
+    "userId": "66dd46191de8e6af7261bcf3"
 }
 
 ### update resource
