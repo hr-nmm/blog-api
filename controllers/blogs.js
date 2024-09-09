@@ -1,16 +1,8 @@
 const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
-const User = require('../models/user')
-const jwt = require('jsonwebtoken')
-// const logger = require('../utils/logger')
-
-const getTokenFrom = (request) => {
-  const authorization = request.get('authorization')
-  if (authorization && authorization.startsWith('Bearer ')) {
-    return authorization.replace('Bearer ', '')
-  }
-  return null
-}
+// const User = require('../models/user')
+// const jwt = require('jsonwebtoken')
+// // const logger = require('../utils/logger')
 
 // get info
 blogsRouter.get('/info', (_, res) => {
@@ -47,11 +39,7 @@ blogsRouter.get('/:id', async (req, res) => {
 // create resource
 blogsRouter.post('/', async (req, res) => {
   const body = req.body
-  const decodedToken = jwt.verify(getTokenFrom(req), process.env.SECRET)
-  if (!decodedToken.id) {
-    return res.status(401).json({ error: 'token invalid' })
-  }
-  const user = await User.findById(decodedToken.id)
+  const user = req.user
   const blog = new Blog({ title: body.title, author: body.author, url: body.url, likes: body.likes, user: user._id })
   const savedBlog = await blog.save()
   user.blogs = user.blogs.concat(savedBlog._id)
@@ -62,9 +50,17 @@ blogsRouter.post('/', async (req, res) => {
 // delete resource
 blogsRouter.delete('/:id', async (req, res) => {
   try {
-    const response = await Blog.findByIdAndDelete(req.params.id)
-    if (response) res.status(204).end()
-    else res.status(404).end()
+    const user = req.user
+    const blogId = req.params.id
+    const blogToDelete = await Blog.findById(blogId)
+
+    if (blogToDelete.user.toString() === user.id) {
+      console.log('innnnnnnnn')
+      await Blog.findByIdAndDelete(blogId)
+      res.status(204).end()
+    }
+    else res.status(401).json({ error: 'Unauthorized to delete the blog' })
+
   } catch (error) {
     res.status(400).json(error)
   }
