@@ -1,5 +1,6 @@
 // imports
 const mongoose = require('mongoose')
+const logger = require('../utils/logger')
 require('dotenv').config()
 
 mongoose.set('strictQuery', false)
@@ -12,7 +13,7 @@ const Blog = mongoose.model('Blog', blogSchema)
 
 if (process.argv.length < 6) {
   Blog.find({}).then((result) => {
-    result.forEach((blog) => { console.log(blog) })
+    result.forEach((blog) => { logger.info(blog) })
     mongoose.connection.close()
   })
 } else {
@@ -22,7 +23,7 @@ if (process.argv.length < 6) {
     likes = process.argv[5]
   const blog = new Blog({ title: title, author: author, url: url, likes: likes })
   blog.save().then((result) => {
-    console.log('note saved!', result)
+    logger.info('blog saved!', result)
     mongoose.connection.close()
   })
 }

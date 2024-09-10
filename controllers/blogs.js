@@ -38,13 +38,17 @@ blogsRouter.get('/:id', async (req, res) => {
 
 // create resource
 blogsRouter.post('/', async (req, res) => {
-  const body = req.body
-  const user = req.user
-  const blog = new Blog({ title: body.title, author: body.author, url: body.url, likes: body.likes, user: user._id })
-  const savedBlog = await blog.save()
-  user.blogs = user.blogs.concat(savedBlog._id)
-  await user.save()
-  res.status(201).json(savedBlog)
+  try {
+    const body = req.body
+    const user = req.user
+    const blog = new Blog({ title: body.title, author: body.author, url: body.url, likes: body.likes, user: user._id })
+    const savedBlog = await blog.save()
+    user.blogs = user.blogs.concat(savedBlog._id)
+    await user.save()
+    res.status(201).json(savedBlog)
+  } catch (error) {
+    res.status(400).json(error).end()
+  }
 })
 
 // delete resource
@@ -55,14 +59,15 @@ blogsRouter.delete('/:id', async (req, res) => {
     const blogToDelete = await Blog.findById(blogId)
 
     if (blogToDelete.user.toString() === user.id) {
-      console.log('innnnnnnnn')
       await Blog.findByIdAndDelete(blogId)
       res.status(204).end()
     }
     else res.status(401).json({ error: 'Unauthorized to delete the blog' })
 
   } catch (error) {
-    res.status(400).json(error)
+    if (error.name === 'TypeError') res.status(404).end()
+    else if (error.name === 'CastError') res.status(400).json(error)
+
   }
 
 })

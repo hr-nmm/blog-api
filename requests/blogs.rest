@@ -12,12 +12,12 @@ GET http://localhost:3001/api/blogs/66d05e16d407cb463574517c3
 
 ### get all 
 GET http://localhost:3001/api/blogs
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QzIiwiaWQiOiI2NmRlMmMxZDg0MjA3NTYxM2E1MGYzYjciLCJpYXQiOjE3MjU4NDAwODIsImV4cCI6MTcyNTg0MzY4Mn0.SYi3NCWQ_jQylm82r1v2YZlol-wpRW090W2eF8jAiAg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QzIiwiaWQiOiI2NmRlMmMxZDg0MjA3NTYxM2E1MGYzYjciLCJpYXQiOjE3MjU5MjM1NTcsImV4cCI6MTcyNTkyNzE1N30.2WJRT3DLujB9vrjWhW5YC4ssvrUTdK9gyEV7Np-Mp-c
 
 ### create resource
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QzIiwiaWQiOiI2NmRlMmMxZDg0MjA3NTYxM2E1MGYzYjciLCJpYXQiOjE3MjU4NDAwODIsImV4cCI6MTcyNTg0MzY4Mn0.SYi3NCWQ_jQylm82r1v2YZlol-wpRW090W2eF8jAiAg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QzIiwiaWQiOiI2NmRlMmMxZDg0MjA3NTYxM2E1MGYzYjciLCJpYXQiOjE3MjU5MjM1NTcsImV4cCI6MTcyNTkyNzE1N30.2WJRT3DLujB9vrjWhW5YC4ssvrUTdK9gyEV7Np-Mp-c
 
 {
     "title": "t3.3",
@@ -38,8 +38,8 @@ Content-Type: application/json
 }
 
 ### delete resource
-DELETE http://localhost:3001/api/blogs/66de3e19910bba84b9248216
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QzIiwiaWQiOiI2NmRlMmMxZDg0MjA3NTYxM2E1MGYzYjciLCJpYXQiOjE3MjU4NDAwODIsImV4cCI6MTcyNTg0MzY4Mn0.SYi3NCWQ_jQylm82r1v2YZlol-wpRW090W2eF8jAiAg
+DELETE http://localhost:3001/api/blogs/66df8135796e8cacf38c3bf6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QzIiwiaWQiOiI2NmRlMmMxZDg0MjA3NTYxM2E1MGYzYjciLCJpYXQiOjE3MjU5MjM1NTcsImV4cCI6MTcyNTkyNzE1N30.2WJRT3DLujB9vrjWhW5YC4ssvrUTdK9gyEV7Np-Mp-c
 
 ### delete single resource => 404 not found(id valid)
 DELETE  http://localhost:3001/api/blogs/66d05e16d407cb4635745173
